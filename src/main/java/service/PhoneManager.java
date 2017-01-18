@@ -49,8 +49,7 @@ public class PhoneManager
     
     public List<Phone> getPhonesStartsWith(String letter)
     {
-        phoneRepository.  
-                .find({name: /^pa/})
+        return phoneRepository.findByModelRegex("^"+letter);
     }
     
 }

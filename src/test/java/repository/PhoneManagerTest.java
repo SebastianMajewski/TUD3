@@ -110,8 +110,7 @@ public class PhoneManagerTest
         assertEquals(phone.getModel(), "Microsoft Lumia 535");
         assertEquals(phone.getPrice(), 500, 0.01);
         assertEquals(phone.getMegaPixels(), 5);
-        assertEquals(phone.getSold(), false);
-            
+        assertEquals(phone.getSold(), false);          
     }
         
         
@@ -130,6 +129,21 @@ public class PhoneManagerTest
         Phone _phone = phoneManager.getPhoneByModel("Microsoft Lumia 535").get(0);
         
         assertTrue(_phone.getParts().size() == 1);
+    }
+    
+    @Test
+    public void findByFirstLetter() 
+    {
+        Phone phone = new Phone();
+        phone.setModel("Lumia 700");
+        phone.setPrice(300);
+        phone.setMegaPixels(2);
+        phone.setSold(false);
+        phoneManager.add(phone);
+        
+        List<Phone> phones = phoneManager.getPhonesStartsWith("L");
+        
+        assertTrue(phones.size() == 1);
     }
 
 }
