@@ -145,5 +145,35 @@ public class PhoneManagerTest
         
         assertTrue(phones.size() == 1);
     }
+    
+    @Test
+    public void removePartsByName() 
+    {
+        Part part = new Part();
+        part.setName("Screen");
+        part.setPrice(120);
+        partManager.add(part);
+        
+        Part _part = new Part();
+        _part.setName("Connector");
+        _part.setPrice(12);
+        partManager.add(_part);
+        
+        Part __part = new Part();
+        __part.setName("Connector");
+        __part.setPrice(16);
+        partManager.add(__part);
+        
+        Phone phone = phoneManager.getPhoneByModel("Microsoft Lumia 535").get(0);
+        phone.addPart(part);
+        phone.addPart(_part);
+        phone.addPart(__part);
+        phoneManager.add(phone);
+        
+        int i = phoneManager.removePartsByName(phone, "Connector");
+        
+        Phone _phone = phoneManager.getPhoneByModel("Microsoft Lumia 535").get(0);
+        assertTrue(_phone.getParts().size() == 1); 
+    }
 
 }

@@ -1,5 +1,6 @@
 package service;
 
+import domain.Part;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -8,13 +9,16 @@ import org.springframework.stereotype.Component;
 
 import repository.PhoneRepository;
 import domain.Phone;
+import repository.PartRepository;
 
 @Component
 public class PhoneManager 
 {
 
     @Autowired
-    private  PhoneRepository phoneRepository;
+    private PhoneRepository phoneRepository;
+    @Autowired
+    private PartRepository partRepository;
 	
     public void add(Phone phone)
     {
@@ -45,6 +49,19 @@ public class PhoneManager
     public Iterable<Phone> getAll() 
     {
         return phoneRepository.findAll();
+    }
+    
+    public int removePartsByName(Phone phone, String name)
+    {
+        int i = 0;
+        List<Part> toRemove = phone.removePartsWithName(name);
+        phoneRepository.save(phone);
+        for(Part part : toRemove)
+        {
+            i++;
+            partRepository.delete(part.getId());
+        }
+        return i;
     }
     
     public List<Phone> getPhonesStartsWith(String letter)

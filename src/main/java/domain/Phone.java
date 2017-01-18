@@ -71,7 +71,7 @@ public class Phone
 		this.parts.add(input);
 	}
         
-        public void removePartsWithName(String name)
+        public List<Part> removePartsWithName(String name)
         {
             List<Part> partsToRemove = new ArrayList<Part>();
             for(Part part : parts)
@@ -82,6 +82,7 @@ public class Phone
                 }
             }
             parts.removeAll(partsToRemove);
+            return partsToRemove;
         }
 	
 	public List<Part> getParts() 
