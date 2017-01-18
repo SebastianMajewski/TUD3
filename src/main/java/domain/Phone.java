@@ -70,7 +70,19 @@ public class Phone
 	{
 		this.parts.add(input);
 	}
-	
+        
+        public void removePartsWithName(String name)
+        {
+            List<Part> partsToRemove = new ArrayList<Part>();
+            for(Part part : parts)
+            {
+                if(part.getName() == name)
+                {
+                    partsToRemove.add(part);
+                }
+            }
+            parts.removeAll(partsToRemove);
+        }
 	
 	public List<Part> getParts() 
 	{

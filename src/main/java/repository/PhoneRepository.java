@@ -8,10 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import domain.Phone;
 
 public interface PhoneRepository extends CrudRepository<Phone, ObjectId> 
-{
-	
-	List<Phone> findByModel(String name);
-	
-	Phone findById(ObjectId id);
-
+{	
+    List<Phone> findByModel(String name);
+    Phone findById(ObjectId id);
+    Phone findByModelLike(String model);
 }

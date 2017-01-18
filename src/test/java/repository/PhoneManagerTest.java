@@ -28,41 +28,41 @@ import service.PhoneManager;
 public class PhoneManagerTest 
 {
 	
-	@Autowired
-	PhoneManager phoneManager;
-	@Autowired
-	PartManager partManager;
+    @Autowired
+    PhoneManager phoneManager;
+    @Autowired
+    PartManager partManager;
         
     @After
-	public void clear() 
+    public void clear() 
     {
-		phoneManager.clear();
+        phoneManager.clear();
         partManager.clear();
-	}
+    }
         
     @Before
     public void add() 
     {
         Phone phone = new Phone();
-		phone.setModel("Microsoft Lumia 535");
+        phone.setModel("Microsoft Lumia 535");
         phone.setPrice(500);
         phone.setMegaPixels(5);
         phone.setSold(false);
-		phoneManager.add(phone);
+        phoneManager.add(phone);
     }
         
-	@Test
-	public void addPhone()
-	{
-		Phone phone = new Phone();
-		phone.setModel("Lumia 700");
+    @Test
+    public void addPhone()
+    {
+        Phone phone = new Phone();
+        phone.setModel("Lumia 700");
         phone.setPrice(300);
         phone.setMegaPixels(2);
         phone.setSold(false);
-		phoneManager.add(phone);
-		
-		assertTrue(phoneManager.getPhoneByModel("Lumia 700").size() == 1);
-	}
+        phoneManager.add(phone);
+
+        assertTrue(phoneManager.getPhoneByModel("Lumia 700").size() == 1);
+    }
         
     @Test 
     public void phoneEdit() 

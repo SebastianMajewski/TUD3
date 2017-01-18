@@ -13,32 +13,32 @@ import domain.Phone;
 public class PhoneManager 
 {
 
-	@Autowired
-	private  PhoneRepository phoneRepository;
+    @Autowired
+    private  PhoneRepository phoneRepository;
 	
-	public void add(Phone phone)
-	{
-		phoneRepository.save(phone);
-	}	
+    public void add(Phone phone)
+    {
+        phoneRepository.save(phone);
+    }	
 	
     public void clear() 
     {
         phoneRepository.deleteAll();
     }
         
-	public List<Phone> getPhoneByModel(String model)
-	{
-		return phoneRepository.findByModel(model);
-	}
-	
-	
-	public Phone getPhone(ObjectId id)
-	{
-		return phoneRepository.findById(id);
-	}
-	
-	public void remove(Phone phone) 
-	{
+    public List<Phone> getPhoneByModel(String model)
+    {
+        return phoneRepository.findByModel(model);
+    }
+
+
+    public Phone getPhone(ObjectId id)
+    {
+        return phoneRepository.findById(id);
+    }
+
+    public void remove(Phone phone) 
+    {
         phoneRepository.delete(phone);
     }
         
@@ -46,4 +46,11 @@ public class PhoneManager
     {
         return phoneRepository.findAll();
     }
+    
+    public List<Phone> getPhonesStartsWith(String letter)
+    {
+        phoneRepository.  
+                .find({name: /^pa/})
+    }
+    
 }

@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PartManager 
 {
-    	@Autowired
-	private  PartRepository partRepository;
+    @Autowired
+    private  PartRepository partRepository;
         
     public void add(Part part) 
     {
@@ -30,8 +30,8 @@ public class PartManager
         
     public List<Part> getPartByName(String name)
     {
-		return partRepository.findByName(name);
-	}
+        return partRepository.findByName(name);
+    }
 	
 	
 	public Part getPart(ObjectId id)

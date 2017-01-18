@@ -10,10 +10,7 @@ import domain.Part;
 
 public interface PartRepository extends CrudRepository<Part, ObjectId>
 {
-
 	@Query(value = "{ 'name' : ?1 }" )
-	List<Part> findByName(String model);
-	
+	List<Part> findByName(String model);	
 	Part findById(ObjectId id);
-
 }
